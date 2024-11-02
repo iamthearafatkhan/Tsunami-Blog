@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+<style>
+    /* Styling for the NOAA data section */
+    .noaa-alert {
+        max-width: 800px;
+        padding: 20px;
+        background-color: #ffeded;
+        border: 2px solid #cc0000;
+        border-radius: 20px;
+        color: #990000;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .alert-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+            font-size: 0.85rem;
+            color: #555;
+            font-style: italic;
+        
+        
+    }
+
+    /* Frame for tsunami animation */
+    .frame {
+        position: relative;
+        width: 80vw;
+        height: 50vh;
+        overflow: hidden;
+        border: 10px solid #222;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        background: #111;
+        margin-top: 30px;
+    }
+
+    /* Ocean container */
+    .ocean {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #0099cc, #003366);
+        overflow: hidden;
+    }
+
+    /* Wave styling for 2D effect */
+    .wave {
+        position: absolute;
+        width: 150%;
+        height: 30%;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50% 50% 0 0;
+        opacity: 0.8;
+        animation: waveMove 6s infinite linear;
+    }
+
+    .wave:nth-child(1) { top: 60%; animation-duration: 4s; opacity: 0.6; }
+    .wave:nth-child(2) { top: 65%; animation-duration: 5s; opacity: 0.5; }
+    .wave:nth-child(3) { top: 70%; animation-duration: 6s; opacity: 0.4; }
+
+    /* Wave animation for back-and-forth movement */
+    @keyframes waveMove {
+        0% { transform: translateX(-50%); }
+        50% { transform: translateX(0%); }
+        100% { transform: translateX(50%); }
+    }
+
+    /* Cyclone effect */
+    .cyclone {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 50px;
+        overflow: visible;
+        animation: rotateCyclone 8s linear infinite; /* Entire cyclone rotation */
+    }
+
+    /* Cyclone swirls */
+    .swirl {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 3px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        animation: rotateSwirl 5s linear infinite;
+    }
+
+    .swirl:nth-child(1) { width: 150%; height: 150%; animation-duration: 6s; }
+    .swirl:nth-child(2) { width: 100%; height: 100%; animation-duration: 4s; animation-direction: reverse; }
+    .swirl:nth-child(3) { width: 50%; height: 50%; animation-duration: 3s; }
+
+    /* Cyclone rotation animation */
+    @keyframes rotateCyclone {
+        0% { transform: translateX(-50%) rotate(0deg); }
+        100% { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    /* Individual swirl rotation */
+    @keyframes rotateSwirl {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="height: 10vh;">
+    <h1>Tsunami and Rotating Cyclone Animation</h1>
+</div>
+
+<div class="container">
+    <div class="frame">
+        <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="cyclone">
+                <div class="swirl"></div>
+                <div class="swirl"></div>
+                <div class="swirl"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert-container">
+    <div class="noaa-alert" id="noaa-alert">
+        <h3>Current Tsunami Alerts</h3>
+        <p id="alert-content">Loading tsunami alert data...</p>
+        <p class="alert-disclaimer text-dark">*This alert information is sourced from NOAA and primarily applies to U.S. coastal regions.</p>
+
+    </div>
+</div>
+
+
+<script>
+    // NOAA Tsunami Alert Fetch
+    async function fetchNOAAAlerts() {
+        try {
+            const response = await fetch("https://api.weather.gov/alerts/active?event=Tsunami");
+            const data = await response.json();
+            const alertDiv = document.getElementById("alert-content");
+
+            if (data.features.length > 0) {
+                alertDiv.innerHTML = data.features.map(alert => {
+                    const { headline, description, instruction } = alert.properties;
+                    return `
+                        <h4>${headline}</h4>
+                        <p><strong>Description:</strong> ${description}</p>
+                        <p><strong>Instructions:</strong> ${instruction}</p>
+                    `;
+                }).join("<hr>");
+            } else {
+                alertDiv.innerHTML = "<p>No current tsunami alerts.</p>";
+            }
+        } catch (error) {
+            console.error("Error fetching NOAA data:", error);
+            document.getElementById("alert-content").textContent = "Failed to load alert data.";
+        }
+    }
+
+    // Call the function on page load
+    fetchNOAAAlerts();
+
+    // Optional: Refresh NOAA data every 10 minutes (600000 ms)
+    setInterval(fetchNOAAAlerts, 600000);
+</script>
+
+{% endblock body %}

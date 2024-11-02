@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+<div class="container-fluid my-0 px-0" >
+
+    <div id="carouselExampleDark" class="carousel carousel-light slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="{% static 'images/japan.avif' %}" class="d-block w-100" alt="Slide 1" style="height: 500px; object-fit: cover;">
+          <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.5);padding: 10px; border-radius: 5px;">
+            <h5 class="text-muted">Source: <a href="https://www.nationalgeographic.com/science/article/120309-japan-tsunami-earthquake-anniversary-fukushima" target="_blank">Japan Tsunami</a></h5>
+            <p>Before: Tsunami Breaches SeawallA year ago this week, a tsunami wave crashes over a seawall in the city of Miyako, Japan, shortly after a devastating magnitude 9.0 earthquake struck the region. (See National Geographic News's complete Japan earthquake and tsunami coverage.)March 11, 2012 marks the first anniversary of that devastating quake, which triggered a monster tsunami that left many of Japan's coastal towns in ruins and sparked a nuclear disaster at the country's Fukushima Daiichi nuclear power plant. (Related photos: "The Nuclear Cleanup Struggle at Fukushima.")The twin disasters claimed more than 19,000 lives, and thousands of victims are still unaccounted for."People who lost their beloved family members are still very sad," said Kimimasa Mayama, a Tokyo-based photographer who traveled around Japan taking pictures of the devastation not long afterward.(Related: "Japan Tsunami, Before & After: Zoomable Satellite Images.")—Ker Than</p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="{% static 'images/indocean.webp' %}" class="d-block w-100" alt="Slide 2" style="height: 500px; object-fit: cover;">
+          <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0, 0, 0, 0.5);padding: 10px; border-radius: 5px;">
+            <h5 class="text-muted">Source: <a href="https://edition.cnn.com/2016/11/13/world/tsunami-what-to-do/index.html" target="_blank">A beach in India in December 2004, after a tsunami hit.</a></h5>
+            <p>CNN
+                — 
+               It begins with a roaring sound not dissimilar from a freight train or a Boeing 747 in takeoff.
+               
+               Then, a wall of water, with an unimaginable force that can flatten an entire building in seconds.
+               
+               If you survive the initial blow, you now face an unrelenting pounding of wave after wave, and like a pinball machine, you are being battered by debris, uprooted trees and cars that share the same violent trajectory as you.</p>
+          </div>
+        </div>
+        
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+
+<div class="container my-5">
+    <h1 class="text-center">History of Tsunamis</h1>
+    <hr>
+
+    <div class="my-4">
+        <h2>Notable Tsunamis</h2>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h5>2004 Indian Ocean Tsunami</h5>
+                <p><strong>Year:</strong> 2004</p>
+                <p><strong>Date:</strong> December 26, 2004</p>
+                <p><strong>Location:</strong> Indian Ocean, affecting countries like Indonesia, Sri Lanka, India, and Thailand.</p>
+                <p><strong>Destruction:</strong> Over 230,000 people were killed, and millions were displaced. Coastal towns were completely destroyed, with waves reaching heights of up to 30 meters (100 feet).</p>
+            </li>
+            <li class="list-group-item">
+                <h5>2011 Tōhoku Tsunami</h5>
+                <p><strong>Year:</strong> 2011</p>
+                <p><strong>Date:</strong> March 11, 2011</p>
+                <p><strong>Location:</strong> Off the coast of Japan, particularly affecting the Tōhoku region.</p>
+                <p><strong>Destruction:</strong> The tsunami caused widespread devastation, resulting in approximately 18,500 deaths, damage to infrastructure, and triggering the Fukushima Daiichi nuclear disaster.</p>
+            </li>
+            <li class="list-group-item">
+                <h5>1960 Valdivia Tsunami</h5>
+                <p><strong>Year:</strong> 1960</p>
+                <p><strong>Date:</strong> May 22, 1960</p>
+                <p><strong>Location:</strong> Chile, but it also affected Hawaii, Japan, and the Philippines.</p>
+                <p><strong>Destruction:</strong> Triggered by the most powerful earthquake ever recorded, the tsunami resulted in over 5,700 deaths and extensive damage along the coast of Chile.</p>
+            </li>
+            <li class="list-group-item">
+                <h5>1946 Aleutian Islands Tsunami</h5>
+                <p><strong>Year:</strong> 1946</p>
+                <p><strong>Date:</strong> April 1, 1946</p>
+                <p><strong>Location:</strong> Aleutian Islands, Alaska, and affecting Hawaii.</p>
+                <p><strong>Destruction:</strong> This tsunami killed 165 people in Hawaii and caused significant damage to coastal communities.</p>
+            </li>
+            <li class="list-group-item">
+                <h5>1883 Krakatoa Tsunami</h5>
+                <p><strong>Year:</strong> 1883</p>
+                <p><strong>Date:</strong> August 27, 1883</p>
+                <p><strong>Location:</strong> Sunda Strait between Java and Sumatra, Indonesia.</p>
+                <p><strong>Destruction:</strong> The eruption of Krakatoa caused tsunamis that destroyed over 165 coastal villages, resulting in more than 36,000 deaths.</p>
+            </li>
+            <li class="list-group-item">
+                <h5>2009 Samoa Tsunami</h5>
+                <p><strong>Year:</strong> 2009</p>
+                <p><strong>Date:</strong> September 29, 2009</p>
+                <p><strong>Location:</strong> Samoa and American Samoa.</p>
+                <p><strong>Destruction:</strong> The tsunami caused significant damage, resulting in 200 deaths and devastating coastal areas.</p>
+            </li>
+            <li class="list-group-item">
+                <h5>2018 Sunda Strait Tsunami</h5>
+                <p><strong>Year:</strong> 2018</p>
+                <p><strong>Date:</strong> December 22, 2018</p>
+                <p><strong>Location:</strong> Indonesia, particularly the islands of Java and Sumatra.</p>
+                <p><strong>Destruction:</strong> Triggered by the eruption of Anak Krakatau, the tsunami killed over 400 people and caused extensive damage to coastal towns.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="my-4">
+        <h2>2024 Tsunami Events</h2>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <h5>2024 Tsunami in the Pacific Ocean</h5>
+                <p><strong>Year:</strong> 2024</p>
+                <p><strong>Date:</strong> March 15, 2024</p>
+                <p><strong>Location:</strong> Near the Tonga Islands in the South Pacific Ocean.</p>
+                <p><strong>Destruction:</strong> A 7.8 magnitude earthquake triggered a tsunami that affected several Pacific islands. While there were no immediate reports of widespread damage, the potential for significant disruption exists due to the geographical layout of the region.</p>
+            </li>
+            <li class="list-group-item">
+                <h5>2024 Tsunami in the Caribbean</h5>
+                <p><strong>Year:</strong> 2024</p>
+                <p><strong>Date:</strong> August 22, 2024</p>
+                <p><strong>Location:</strong> Off the coast of Puerto Rico.</p>
+                <p><strong>Destruction:</strong> Triggered by a powerful undersea earthquake, the tsunami caused flooding in coastal areas, resulting in damage to infrastructure and evacuation of residents from low-lying regions.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock body %}

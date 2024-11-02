@@ -1,0 +1,56 @@
+This is Tsunami blog site (Basic), i created this purpose of practice.
+Here, i use Django framework.
+
+
+Create Django project: python -m django startproject (Project name)->Tsunami  
+Create Django app: python manage.py startapp (App name)->home
+- python manage.py makemigrations
+- python manage.py migrate
+ Now we create super user for access to the login
+-python manage.py createsuperuser
+ID- admin Pass- admin
+
+Create DB in Models.py
+-
+from django.db import models
+
+# Create your models here.
+
+class Comment(models.Model):
+    name = models.CharField(max_length=100)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)  # Now set it back to auto_now_add
+
+    def __str__(self):
+        return self.name
+
+
+After that
+-python manage.py makemigrations
+
+Register the models in Admin.py
+-
+from home.models import Comment
+# Register your models here.
+admin.site.register(Comment)
+
+And then go settings.py
+-
+INSTALLED_APPS = [
+    'home.apps.HomeConfig', (HomeConfig from apps.py)
+
+After that
+-python manage.py makemigrations
+-python manage.py migrate
+
+
+API Settings
+-
+-pip install openai
+
+# settings.py
+OPENAI_API_KEY = 'your_openai_api_key_here'
+
+------------- 0 ------------------
+
+[ you need to update this page yourself.]
